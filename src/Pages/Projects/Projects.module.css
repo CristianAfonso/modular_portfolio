@@ -1,0 +1,10 @@
+.project_button {
+  width: 150px;
+  border-radius: 50%;
+  height: 150px;
+  background-size: cover;
+  background-position: center;
+  border: none;
+  color: white;
+  cursor: pointer;
+}/*# sourceMappingURL=Projects.module.css.map */

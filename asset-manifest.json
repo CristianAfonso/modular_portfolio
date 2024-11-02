@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/modular_portfolio/static/css/main.9d628a79.css",
-    "main.js": "/modular_portfolio/static/js/main.7b887046.js",
+    "main.css": "/modular_portfolio/static/css/main.fefb4ea7.css",
+    "main.js": "/modular_portfolio/static/js/main.ead2e2dd.js",
     "static/js/453.e823b4a7.chunk.js": "/modular_portfolio/static/js/453.e823b4a7.chunk.js",
+    "static/media/LeagueSpartan-VariableFont_wght.ttf": "/modular_portfolio/static/media/LeagueSpartan-VariableFont_wght.373d611ec44856608b96.ttf",
+    "static/media/PixelGame.otf": "/modular_portfolio/static/media/PixelGame.a7040ee1df82fd46813b.otf",
     "index.html": "/modular_portfolio/index.html",
-    "main.9d628a79.css.map": "/modular_portfolio/static/css/main.9d628a79.css.map",
-    "main.7b887046.js.map": "/modular_portfolio/static/js/main.7b887046.js.map",
+    "main.fefb4ea7.css.map": "/modular_portfolio/static/css/main.fefb4ea7.css.map",
+    "main.ead2e2dd.js.map": "/modular_portfolio/static/js/main.ead2e2dd.js.map",
     "453.e823b4a7.chunk.js.map": "/modular_portfolio/static/js/453.e823b4a7.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.9d628a79.css",
-    "static/js/main.7b887046.js"
+    "static/css/main.fefb4ea7.css",
+    "static/js/main.ead2e2dd.js"
   ]
 }

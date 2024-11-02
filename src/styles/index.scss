@@ -1,23 +1,295 @@
+@import './variables';
+
+
 body {
+    &.theme-light {
+      @include light-theme;
+    }
+
+    &.theme-dark {
+      @include dark-theme;
+    }
+    
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: var(--background_color);
+    color: var(--text_color);
+    overflow-x: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'League Spartan', 'Montserrat', 'Segoe UI', 'Roboto', 'Oxygen', sans-serif;
+    transition: all .5s ease;
+}
+
+#root{
+  @include flex-column;
+}
+
+.button_theme_toggler{
+  background-color: var(--text_color);
+  color: var(--background_color);
+  @include flex-column;
+  position: fixed;
+  padding: 10px;
+  top:0;
+  right: 0;
+  border: none;
+  border-bottom-left-radius: 15px;
+  box-shadow: -1px 1px 2px var(--primary_color);
+  transition: all .5s ease;
+  z-index: 50;
+  &:hover{
+    cursor: pointer;
+    box-shadow: 0px 0px 40px var(--secondary_color_dark);
+    svg{
+      filter: drop-shadow(1px 1px 1px var(--secondary_color));
+    }
   }
-  
-  .code_area {
-    font-size: larger;
-    width: max-content !important;
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace !important;
-    border-radius: 15px;
+}
+
+section{
+  max-width: 1000px;
+  width: 100%;
+  padding: 35px 0;
+  border-bottom: 1px solid var(--text_color);
+  position: relative;
+  display: inline-block;
+   & > *{
+    margin: auto;
+    width: 90%;
   }
-  .avatar_photo{
-    height: 300px;
-    width: auto;
+}
+
+#hero{
+  @include flex-column;
+  gap: 25px;
+  text-align: center;
+  img{
+    width: 75%;
+    height: auto;
+    max-width: 350px;
     border-radius: 50%;
-    border: 4px solid white;
   }
-  
+}
+.icon_group{
+  @include flex-row;
+  align-items: center;
+  width: max-content;
+  margin: auto;
+  gap: 25px;
+  a{
+    text-decoration: none;
+    color: var(--primary_color_dark);
+    font-size: 35px;
+    display: flex;
+    transition: all .5s ease;
+    &:hover{
+      color: var(--secondary_color_dark);
+      filter: drop-shadow(0 0 5px var(--primary_color_light));
+    }
+  }
+}
+
+.button_group{
+  @include flex-column;
+  width: 90%;
+  max-width: 350px;
+  gap: 10px;
+
+  @media screen and (width >= 420px) {
+      @include flex-row;
+  }
+  a, button{
+    border: none;
+    text-decoration: none;
+    padding: 15px;
+    background-color: var(--primary_color_dark);
+    width: 200px;
+    line-height: 25px;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--background_color);
+    z-index: 1;
+    border-radius: 15px;
+    font-weight: 600;
+    @include flex-column;
+    height: auto;
+    span{
+      height: auto;
+    }
+    &:hover{
+      z-index: 0;
+      cursor: pointer;
+      background-color: var(--secondary_color_dark);
+      filter: drop-shadow(0 0 15px var(--secondary_color_dark));
+    }
+  }
+}
+
+.projects_container{
+  position: relative;
+  z-index: 0;
+  overflow-x: scroll;
+  width: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  .projects_wrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: max-content;
+    max-width: max-content;
+    padding-left: 25px;
+    .project_button{
+      width: 125px;
+      height: 125px;
+      border-radius: 50%;
+      background-size: cover;
+      background-position: center; 
+      border: none;
+      color: white;
+      cursor: pointer;
+      margin-right: 25px;
+    }
+  }
+}
+
+#project{
+  width: 90vw;
+  max-width: 1000px;
+  margin-top: 35px;
+  border-top: 1px solid var(--text_color);
+  @include flex-column;
+  gap: 33px;
+  margin-bottom: 50px;
+  h4{
+    text-align: center;
+    font-family: 'Pixel', sans-serif;
+    font-size: 64px;
+    margin-bottom: 0;
+  }
+  .quote{
+    text-align: center;
+    font-style: oblique;
+    font-size: 24px;
+    margin: auto;
+  }
+  .tag_group{
+    @include flex-row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 25px;
+    width: auto;
+    margin: auto;
+    .tag{
+      text-transform: capitalize;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--background_color);
+      filter: drop-shadow(2px 2px 1px var(--secondary_color_light));
+      .tag_title{
+        background-color: var(--text_color);
+        padding-top: 5px;
+        padding-bottom: 3px;
+        padding-left: 15px;
+        padding-right: 5px;
+        border-top-left-radius: 25px;
+        border-bottom-left-radius: 25px;
+      }
+      .tag_content{
+        text-transform: uppercase;
+        color: white;
+        padding-top: 5px;
+        padding-bottom: 3px;
+        padding-left: 5px;
+        padding-right: 15px;
+        border-top-right-radius: 25px;
+        border-bottom-right-radius: 25px;
+        height: 100%;
+      }
+    }
+  }
+  .project_description{
+    margin: auto;
+    font-size: 22px;
+    text-align: justify;
+    p{
+      margin: auto;
+    }
+  }
+  .video_wrapper{
+    width: 100%;
+    max-width: 1280px;
+    height: auto;
+    max-height: 720px;
+    iframe{
+      width: 100%;
+      aspect-ratio: 16/9;
+    }
+  }
+}
+.career_wrapper{
+  padding-top: 35px;
+  width: 100%;
+  .carreer_element{
+    border-top: 1px solid var(--text_color);
+    padding: 35px 0;
+    & > *{
+      margin: auto;
+      padding: 15px 0;
+      text-align: center;
+      width: 90vw;
+      margin: auto;
+      max-width: 1000px;
+    }
+    h4{
+      font-size: 32px;
+    }
+    h5{
+      font-size: 26px;
+      text-transform: capitalize;
+    }
+    h6{
+      font-size: 22px;
+      text-transform: uppercase;
+    }
+    p{
+      font-size: 18px;
+      text-align: justify;
+    }
+  }
+}
+.skill_group{
+  @include flex-column;
+  align-items: flex-start;
+  gap: 15px;
+  width: 90vw;
+  margin: auto;
+  max-width: 1000px;
+  h4{
+    font-size: 26px;
+  }
+  .skill_container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 1px solid var(--secondary_color);
+    border-radius: 15px;
+    overflow: hidden;
+    .skill_wrapper{
+      padding: 5px 0;
+      background-color: var(--secondary_color_light);
+      border-radius: 15px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      span{
+        margin: auto 15px;
+      }
+    }
+
+
+  }
+}

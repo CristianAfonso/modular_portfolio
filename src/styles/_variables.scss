@@ -1,0 +1,51 @@
+@mixin light-theme{
+    --background_color:      #f4f4f9;
+    --text_color:            #333333;
+    
+    --primary_color:         #8a8d91;      
+    --primary_color_dark:    #5c5f63; 
+    --primary_color_light:   #c0c3c7;
+    
+    --secondary_color:       #d4a373;      
+    --secondary_color_dark:  #b58454; 
+    --secondary_color_light: #f5e0c3;
+}
+
+@mixin dark-theme{
+    --background_color:      #1e1e1e;
+    --text_color:            #e5e5e5;
+    
+    --primary_color:         #8a8d91;           
+    --primary_color_dark:    #c0c3c7;  
+    --primary_color_light:   #5c5f63;     
+
+    --secondary_color:       #d4a373;      
+    --secondary_color_dark:  #f5e0c3; 
+    --secondary_color_light: #b58454;
+}
+
+@font-face {
+  font-family: 'League Spartan';
+  src: url('./fonts/League_Spartan/LeagueSpartan-VariableFont_wght.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Pixel';
+  src: url('./fonts/Pixel/PixelGame.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@mixin flex-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+@mixin flex-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

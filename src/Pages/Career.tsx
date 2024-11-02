@@ -5,15 +5,12 @@ const Career: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState('')
   return (
     <>
-    <hr/>
-    <div>
-      <button onClick={() => {setSelectedTab("education")}}>Education</button>
-      <button onClick={() => {setSelectedTab("work")}}>Work</button>
+    <div className='button_group'>
+      <a onClick={() => {setSelectedTab("education")}}>Education</a>
+      <a onClick={() => {setSelectedTab("work")}}>Work</a>
     </div>
     { selectedTab &&
-      <>
-        <hr/>
-        <div>
+        <div className='career_wrapper'>
           {
             selectedTab === 'education' ?
               studyElements.map((element, index) => (
@@ -25,7 +22,6 @@ const Career: React.FC = () => {
               ))
           }
         </div>
-      </>
     }
     </>
   );

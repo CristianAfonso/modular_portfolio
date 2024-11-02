@@ -7,7 +7,7 @@ export interface ProjectModel {
     title: string,
     img_url: string,
     date: string,       /* Date format: DD/MM/YY */
-    categories: string[],
+    category: string[],
     languages: string[],
     description: string,
     quotes?: string[],

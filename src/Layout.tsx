@@ -3,26 +3,45 @@ import { Outlet, Link } from 'react-router-dom';
 import { globalVariables } from './globalVariables';
 import { FaGithub, FaYoutube, FaLinkedin } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
+import ThemeToggleButton from './Components/ThemeTogglerButton';
+
+
 const Layout: React.FC = () => {
+  
+  const handleUseLink = async() => {
+    
+      const outletElement = document.getElementById('outlet');
+      if (outletElement) {
+        await new Promise(resolve => setTimeout(resolve, 10)); //Espera al cambio en la navegación
+        outletElement.scrollIntoView({ behavior: 'smooth' });
+      }
+  }
   return (
     <>
-        <h1>{globalVariables.name}</h1>
-        <img className="avatar_photo" alt="Nombre" src={`${process.env.PUBLIC_URL}/default_avatar.jpg`}/>
-        <div className='icon_group'>
-          { globalVariables.url_github    !== '' ?    <Link className="icon_link" to={globalVariables.url_github}><FaGithub></FaGithub></Link> : <></>}
-          { globalVariables.url_youtube   !== '' ?    <Link className="icon_link" to={globalVariables.url_youtube}><FaYoutube></FaYoutube></Link> : <></>}
-          { globalVariables.url_linkedin  !== '' ?    <Link className="icon_link" to={globalVariables.url_linkedin}><FaLinkedin></FaLinkedin></Link> : <></>}
-          { globalVariables.url_mailto    !== '' ?    <Link className="icon_link" to={globalVariables.url_mailto}><IoIosMail></IoIosMail></Link> : <></>}
-        </div>
-        <hr/>
-        <p>{globalVariables.my_description}</p>
-        <hr/>
-        <div className='button_group'>
-          <Link to="/projects">Projects</Link>
-          <Link to="/career">Career</Link>
-          <Link to="/skills">Skills</Link>
-        </div>
-        <Outlet />
+        <ThemeToggleButton/>
+        <section id="hero">
+          <h1>{globalVariables.name}</h1>
+          <img alt="avatar" src={`${process.env.PUBLIC_URL}/${globalVariables.my_photo}`}/>
+          <div className='icon_group'>
+            { globalVariables.url_github   && <a className="icon" target="_blank" rel="noreferrer" href={'http://' + globalVariables.url_github}><FaGithub></FaGithub></a> }
+            { globalVariables.url_youtube  && <a className="icon" target="_blank" rel="noreferrer" href={'http://' + globalVariables.url_youtube}><FaYoutube></FaYoutube></a> }
+            { globalVariables.url_linkedin && <a className="icon" target="_blank" rel="noreferrer" href={'http://' + globalVariables.url_linkedin}><FaLinkedin></FaLinkedin></a> }
+            { globalVariables.url_mailto   && <a className="icon" target="_blank" rel="noreferrer" href={'http://' + globalVariables.url_mailto}><IoIosMail></IoIosMail></a> }
+          </div>
+        </section>
+        <section>
+          <p>{globalVariables.my_description}</p>
+        </section>
+        <section>
+          <div className='button_group'>
+            <Link to="/projects#outlet" onClick={() => {handleUseLink()}}><span>Projects</span></Link>
+            <Link to="/career#outlet"   onClick={() => {handleUseLink()}}><span>Career</span></Link>
+            <Link to="/skills#outlet"   onClick={() => {handleUseLink()}}><span>Skills</span></Link>
+          </div>
+        </section>
+        <section id='outlet'>
+          <Outlet />
+        </section>
     </>
   );
 };

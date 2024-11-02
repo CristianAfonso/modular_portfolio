@@ -1,33 +1,33 @@
 import { IoIosDocument } from "react-icons/io";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import {ProjectModel} from '../../models'
-import styles from './Project.module.css'
-import Tag from './Tag/Tag';
+import Tag from './Tag';
 import { Link
 
  } from 'react-router-dom';
 const Project: React.FC<ProjectModel> = (project) => {
     
         const date = project.date;
-        const categories = project.categories;
+        const category = project.category;
         const languages = project.languages;
         const engine = project.engine;
 
-        const tagsElements = {date, categories, languages, engine};
+        const tagsElements = {date, category, languages, engine};
+        
     return (
-        <div className={styles.project_container}>
+        <div id='project'>
             <h4>{project.title}</h4>
             {project.quotes ?
                 project.quotes?.map((quote, index) => {
                     return (
-                        <p className={styles.quote_text} key={index}>
-                            {quote}
+                        <p className='quote' key={index}>
+                            "{quote}"
                         </p>
                     )
                 })
                 : <></>
             }
-            <div className={styles.tags_container}>
+            <div className='tag_group'>
                 {
                     Object.entries(tagsElements).map(([key, element], i) => (
                         <>
@@ -43,20 +43,21 @@ const Project: React.FC<ProjectModel> = (project) => {
                 }
             </div>
             <div className='icon_group'>
-              { project.github_url      ?  <Link className="icon_link" to={project.github_url}><FaGithub></FaGithub></Link> : <></>}
-              { project.doc_url         ?  <Link className="icon_link" to={project.doc_url}><IoIosDocument></IoIosDocument></Link> : <></>}
-              { project.project_url     ?  <Link className="icon_link" to={project.project_url}><FaExternalLinkAlt></FaExternalLinkAlt></Link> : <></>}
+              { project.github_url      ?  <Link className="icon" to={project.github_url}><FaGithub></FaGithub></Link> : <></>}
+              { project.doc_url         ?  <Link className="icon" to={project.doc_url}><IoIosDocument></IoIosDocument></Link> : <></>}
+              { project.project_url     ?  <Link className="icon" to={project.project_url}><FaExternalLinkAlt></FaExternalLinkAlt></Link> : <></>}
             </div>
-            <div className={styles.description_container}>
+            <div className='project_description'>
                 <p>
                     {project.description}
                 </p>
             </div>
             {
                 project.youtube_url &&
-                    <div className={styles.video_wrapper}>
-                        <iframe title={project.title}
-                            src={project.youtube_url}
+                    <div className='video_wrapper'>
+                        <iframe title={project.title}   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                        allowFullScreen
+                            src={`https://www.youtube.com/embed/${project.youtube_url.split("v=")[1]}`}
                         ></iframe>
                     </div>
             }
